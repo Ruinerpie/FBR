@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fresh Bite by Raptor – Artisan Bakery</title>
+
+  <!-- Google Fonts: Lora for headlines, Inter for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <!-- Font Awespre!ome for icons (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="images/logo.png" alt="Fresh Bite by Raptor" class="logo-img" />
+        <span class="logo-text">Fresh Bite <span class="logo-by">by Raptor</span></span>
+      </div>
+
+      <!-- Navigation (desktop) -->
+      <nav class="nav-desktop">
+        <a href="#shop" class="nav-link">Shop</a>
+        <a href="#custom-cake" class="nav-link">Custom Cakes</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Header Icons -->
+      <div class="header-icons">
+        <button class="icon-btn search-toggle" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="icon-btn wishlist-toggle" aria-label="Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="badge wishlist-badge" id="wishlistBadge">0</span>
+        </button>
+        <button class="icon-btn cart-toggle" aria-label="Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="badge cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="icon-btn menu-toggle" aria-label="Menu" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile" id="navMobile">
+      <a href="#shop" class="nav-link">Shop</a>
+      <a href="#custom-cake" class="nav-link">Custom Cakes</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <!-- Search Bar (slide‑down) -->
+    <div class="search-bar" id="searchBar">
+      <div class="search-inner">
+        <input type="text" id="searchInput" placeholder="Search for bread, cakes, cookies..." />
+        <button class="btn-primary" id="searchBtn"><i class="fas fa-search"></i></button>
+      </div>
+      <!-- Filter options (simple) -->
+      <div class="search-filters">
+        <select id="categoryFilter">
+          <option value="all">All Categories</option>
+          <option value="breads">Breads</option>
+          <option value="buns">Buns</option>
+          <option value="cookies">Cookies</option>
+          <option value="pastries">Pastries</option>
+          <option value="cakes">Cakes</option>
+          <option value="cream-rolls">Cream Rolls</option>
+          <option value="muffins">Muffins</option>
+          <option value="cupcakes">Cupcakes</option>
+          <option value="plum-cake">Plum Cake</option>
+        </select>
+        <input type="range" id="priceFilter" min="0" max="500" value="500" />
+        <span id="priceLabel">₹0 – ₹500</span>
+        <button class="btn-secondary" id="clearFilters">Clear Filters</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Freshly Baked,<br />Delivered to You</h1>
+      <p class="hero-sub">Artisan breads, pastries, and cakes – made from scratch every morning.</p>
+      <a href="#shop" class="btn-primary hero-cta">Order Now</a>
+    </div>
+    <div class="hero-image">
+      <img src="images/hero.jpg" alt="Assorted fresh baked goods" />
+    </div>
+  </section>
+
+  <!-- ========== CATEGORY TILES (horizontal scroll) ========== -->
+  <section class="categories" id="categories">
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="category-strip">
+      <!-- Will be populated by JS, but we provide fallback static -->
+    </div>
+  </section>
+
+  <!-- ========== SHOP / PRODUCT GRID ========== -->
+  <section class="shop" id="shop">
+    <h2 class="section-title">Best Sellers</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- Products will be rendered by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ========== TODAY'S FRESH (urgency banner) ========== -->
+  <section class="fresh-banner">
+    <div class="fresh-content">
+      <i class="fas fa-clock"></i>
+      <span>Today's Fresh Batch – Limited Quantities!</span>
+      <a href="#shop" class="btn-accent">Grab Now</a>
+    </div>
+  </section>
+
+  <!-- ========== CUSTOM CAKE CTA ========== -->
+  <section class="custom-cake-cta" id="custom-cake">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Planning a Celebration?</h2>
+        <p>Order a custom cake – birthdays, weddings, anniversaries. Made just the way you want.</p>
+        <button class="btn-primary" id="openCakeModal">Request a Custom Cake</button>
+      </div>
+      <div class="cta-image">
+        <img src="images/custom-cake.jpg" alt="Custom cake" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps">
+      <div class="step"><i class="fas fa-search"></i><h3>Browse</h3><p>Explore our fresh selection</p></div>
+      <div class="step"><i class="fas fa-cart-plus"></i><h3>Add to Cart</h3><p>Pick your favourites</p></div>
+      <div class="step"><i class="fas fa-truck"></i><h3>Delivery or Pickup</h3><p>Choose what suits you</p></div>
+      <div class="step"><i class="fas fa-smile"></i><h3>Enjoy!</h3><p>Freshness guaranteed</p></div>
+    </div>
+  </section>
+
+  <!-- ========== CUSTOMER REVIEWS ========== -->
+  <section class="reviews">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"The best bread in town – always fresh and soft."</p>
+        <span class="reviewer">– Priya S.</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Ordered a custom cake for my daughter's birthday – it was stunning and delicious."</p>
+        <span class="reviewer">– Rahul K.</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p>"Love their cookies! Perfectly crisp and buttery."</p>
+        <span class="reviewer">– Ananya M.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWSLETTER / WHATSAPP ========== -->
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <h3>Get Daily Menu Updates</h3>
+      <p>Sign up for our WhatsApp list or newsletter for special discounts.</p>
+      <form id="newsletterForm">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit" class="btn-accent">Subscribe</button>
+      </form>
+      <p class="whatsapp-link"><i class="fab fa-whatsapp"></i> Or join us on <a href="#">WhatsApp</a></p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Fresh Bite by Raptor</h4>
+        <p>Artisan Bakery – homemade with love.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-envelope"></i> hello@freshbite.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Bakery Lane, Your City</p>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#">Delivery Areas</a>
+        <a href="#">Opening Hours</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Fresh Bite by Raptor. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ========== CART SIDEBAR ========== -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- rendered by JS -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-totals">
+        <p>Subtotal: <span id="subtotal">₹0</span></p>
+        <p>Delivery: <span id="deliveryCharge">₹0</span></p>
+        <p><strong>Total: <span id="totalPrice">₹0</span></strong></p>
+      </div>
+      <div class="cart-actions">
+        <button class="btn-secondary" id="continueShopping">Continue Shopping</button>
+        <button class="btn-primary" id="checkoutBtn">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- ========== WISHLIST SIDEBAR ========== -->
+  <div class="wishlist-sidebar" id="wishlistSidebar">
+    <div class="wishlist-header">
+      <h3>Your Wishlist</h3>
+      <button class="close-wishlist" id="closeWishlist"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="wishlist-items" id="wishlistItems">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+  <div class="wishlist-overlay" id="wishlistOverlay"></div>
+
+  <!-- ========== CHECKOUT MODAL ========== -->
+  <div class="checkout-modal" id="checkoutModal">
+    <div class="checkout-content">
+      <button class="close-checkout" id="closeCheckout"><i class="fas fa-times"></i></button>
+      <h2>Checkout</h2>
+      <form id="checkoutForm">
+        <div class="form-group">
+          <label>Delivery or Pickup?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="deliveryType" value="delivery" checked> Delivery</label>
+            <label><input type="radio" name="deliveryType" value="pickup"> Pickup</label>
+          </div>
+        </div>
+        <div class="form-group" id="addressGroup">
+          <label>Delivery Address</label>
+          <input type="text" placeholder="Street, area, landmark" required />
+          <input type="text" placeholder="City" required />
+          <input type="text" placeholder="Pincode" required />
+        </div>
+        <div class="form-group">
+          <label>Delivery/Pickup Time</label>
+          <input type="datetime-local" required />
+        </div>
+        <div class="form-group">
+          <label>Order Notes (optional)</label>
+          <textarea placeholder="Special instructions, cake message, etc."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Payment Method</label>
+          <select>
+            <option>Cash on Delivery</option>
+            <option>UPI</option>
+            <option>Card</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn-primary">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="checkout-overlay" id="checkoutOverlay"></div>
+
+  <!-- ========== CUSTOM CAKE MODAL ========== -->
+  <div class="cake-modal" id="cakeModal">
+    <div class="cake-content">
+      <button class="close-cake" id="closeCake"><i class="fas fa-times"></i></button>
+      <h2>Custom Cake Order</h2>
+      <form id="cakeForm">
+        <div class="form-group">
+          <label>Occasion</label>
+          <select>
+            <option>Birthday</option>
+            <option>Anniversary</option>
+            <option>Wedding</option>
+            <option>Festival</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cake Size / Weight</label>
+          <select>
+            <option>1 kg</option>
+            <option>2 kg</option>
+            <option>3 kg</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Flavour</label>
+          <input type="text" placeholder="Vanilla, chocolate, red velvet..." />
+        </div>
+        <div class="form-group">
+          <label>Message on Cake</label>
+          <input type="text" placeholder="Happy Birthday..." />
+        </div>
+        <div class="form-group">
+          <label>Design Reference (upload photo)</label>
+          <input type="file" accept="image/*" />
+        </div>
+        <div class="form-group">
+          <label>Required Date & Time</label>
+          <input type="datetime-local" required />
+        </div>
+        <div class="form-group">
+          <label>Your Contact</label>
+          <input type="text" placeholder="Phone number" required />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn-primary">Send Request</button>
+        </div>
+      </form>
+      <p class="note">* We'll confirm your custom order within 24 hours.</p>
+    </div>
+  </div>
+  <div class="cake-overlay" id="cakeOverlay"></div>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="script.js"></script>
+</body>
+</html>
